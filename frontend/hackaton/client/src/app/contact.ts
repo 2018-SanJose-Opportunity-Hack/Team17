@@ -1,4 +1,4 @@
-class contactInfo{
+class Contact{
 
     Advisor: string;
     AdvisorPhone: string;

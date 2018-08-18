@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CallInfosComponent } from './call-infos/call-infos.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CallInfosComponent
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
