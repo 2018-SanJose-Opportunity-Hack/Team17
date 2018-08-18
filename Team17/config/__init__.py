@@ -3,8 +3,6 @@ from ConfigParser import SafeConfigParser
 import sys
 import pkg_resources
 
-log = logger.getLogger(__name__)
-
 '''
 set config parsers
 '''
