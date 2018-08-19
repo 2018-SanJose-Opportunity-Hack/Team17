@@ -31,16 +31,15 @@ def get_logs():
     result = fetch_query(statement)
     log.info(result)
     for res in result:
-        if res[9]:
-            call = client.calls(res[9]).fetch()
-            duration = call.duration + " sec"
-            if int(call.duration) > 30:
+        if res[10]:
+            duration = str(res[10]) + " sec"
+            if int(res[10]) > 10:
                 status = 'Completed'
             else:
                 status = "Not Completed"
         else:
-            duration = None
-            status = "Not Completed"
+            duration = "-"
+            status = "NA"
         temp = templates.call_log.copy()
         temp["match_sid"],temp["advisor_name"],temp["advisor_phone"],\
         temp["advisor_email"],temp["sbo_name"],temp["sbo_email"],\
