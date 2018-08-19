@@ -1,45 +1,39 @@
 <div class = "container">
-  <br>
-    <h3 class="page-header">Call logger</h3>
+    <br>
+    <h3 class="page-header">Call Logger</h3>
     <hr>
-  
-    <div class="form-group">
-      <label>First Name</label>
-      <input type = "text" [(ngModel)] = "first_name" name = "first_name" class = "form-control">
-    </div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Advisor Name</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Scheduled Date</th>
+      <th scope="col">Call Status</th>
+      <th scope="col">Call Duration</th>
+      <th scope="col">Survey Sent</th>
+      <th scope="col">Survey Completed</th>
+      
+    </tr>
+  </thead>
 
-    <div class="form-group">
-        <label>Last Name</label>
-        <input type = "text" [(ngModel)] = "last_name" name = "last_name" class = "form-control">
-    </div>
-
-    <div class="form-group">
-          <label>Phone No.</label>
-          <input type = "text" [(ngModel)] = "phone" name = "phone" class = "form-control">
-    </div>
-   
   
+  <tbody *ngFor = "let contact of contacts">
+    <tr class="table-active">
+      <td>{{contact.first_name}}</td>
+      <td>{{contact.last_name}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>   
+    
+  </tbody>
+
+</table> 
+
 </div>
+    
 
 
 <hr>
-
-<div class = "container">
-  <div *ngFor = "let contact of contacts">
-    <div class ="row">
-          <div class = "col-md-3">
-            FirstName: {{contact.first_name}}
-          </div>
-          <div class = "col-md-3">
-            {{contact.last_name}}
-          </div>
-          <div class = "col-md-3">
-            {{contact.phone}}
-          </div>
-          <div>
-            <input type="button" (click) = "deleteContacts(contact._id)" value ="Delete" class ="btn btn-danger">
-          </div>
-    </div>
-      <br>
-  </div>
-</div>
