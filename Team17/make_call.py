@@ -22,14 +22,27 @@ def call(twiml,to_num,from_num='+16504762892'):
                             to=to_num,
                             from_=from_num
                         )
-    log.info("called with call sid {}".format(call_obj.sid))
+    log.info("called {} with call sid {}".format(to_num, call_obj.sid))
 
     return call_obj
 
 
-def make_call(meeting_id):
-    sbo = call(config.get('TWIML','sbo_twiml'),config.get('NUMS','sbo'))
-    adv = call(config.get('TWIML','adv_twiml'),config.get('NUMS','adv'))
+def make_call(match_id):
+    fetch = "select advisor_phone,sbo_phone from pcv_matches where match_sid={}".format(match_id)
+    res = fetch_query(fetch)
+    sbo_ph = ''.join(res[0][1].split('-'))
+    adv_ph = ''.join(res[0][0].split('-'))
+    if sbo_ph[0] != '+':
+        sbo_ph = '+1'+sbo_ph
+    if adv_ph[0] != '+':
+        adv_ph = '+1'+adv_ph
+    sbo = call(config.get('TWIML','sbo_twiml'),res[0][1])
+    adv = call(config.get('TWIML','adv_twiml'),res[0][0])
+    update = "update PCV_MATCHES set call_sid='{}' where match_sid={}".format(sbo.sid,match_id)
+    if update_query(update):
+        log.info('table updated with query {}'.format(update))
+    else:
+        log.error('table couldnot be updated')
 
 if __name__=="__main__":
     run()

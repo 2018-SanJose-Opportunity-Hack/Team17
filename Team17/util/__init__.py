@@ -1,6 +1,7 @@
 import sqlite3
 
-from Team17.util.imports import *
+from Team17.config import file_config
+from Team17.util import logger
 
 log = logger.getLogger(__name__)
 config = file_config()

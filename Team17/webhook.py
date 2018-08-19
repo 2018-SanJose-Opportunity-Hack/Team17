@@ -21,18 +21,18 @@ def get_sbo_twiml():
     response = VoiceResponse()
     dial = Dial()
     dial.conference('Room 1234')
-    response.say('HI ENTERPRENEUR connecting to Advisor please be patient')
+    response.say('HI entrepreneur connecting to Advisor please be patient')
     response.append(dial)
     print(str(response))
     return Response(str(response),mimetype='text/xml')
-    
+
 
 @application.route('/adv_twiml', methods=['GET','POST'])
 def get_adv_twiml():
     response = VoiceResponse()
     dial = Dial()
     dial.conference('Room 1234')
-    response.say('HI Advisor please be patient connecting to ENTERPRENEUR ')
+    response.say('HI Advisor please be patient connecting to entrepreneur ')
     response.append(dial)
     return Response(str(response),mimetype='text/xml')
 
