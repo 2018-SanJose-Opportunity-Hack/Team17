@@ -10,5 +10,6 @@ call_log = {
             u"interview_date": u"",
             u"interview_time": u"",
             u"call_sid": u"",
-            u"call_duration": u""
+            u"call_duration": u"",
+            u"status": u""
 }
