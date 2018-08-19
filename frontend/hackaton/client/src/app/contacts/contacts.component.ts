@@ -24,12 +24,6 @@ export class ContactsComponent implements OnInit {
      advisor_email: string;
      interview_time: string;
 
-
- 
-    /*first_name: string;
-    last_name: string;
-    phone: string;*/
-
   constructor(private contactService: ContactService) { }
 
   ngOnInit() {
