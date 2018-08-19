@@ -15,4 +15,11 @@ log.error("for error")</br>
 log.exception("for raising exception")</br>
 
 #### for db:
-from Team17.util import fetch_query
+from Team17.util import fetch_query, update_query</br>
+result = fetch_query(query)</br>
+
+#### run services
+webhook: python webhook.py</br>
+./ngrok http 5000</br>
+service: python app.py</br>
+./ngrok http 30000</br>

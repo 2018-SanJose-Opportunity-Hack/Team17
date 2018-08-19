@@ -28,7 +28,7 @@ def call(twiml,to_num,from_num='+16504762892'):
 
 
 def make_call(match_id):
-    fetch = "select advisor_phone,sbo_phone from pcv_matches where match_sid={}".format(match_id)
+    fetch = "select advisor_phone,sbo_phone,advisor_name,sbo_name from pcv_matches where match_sid={}".format(match_id)
     res = fetch_query(fetch)
     sbo_ph = ''.join(res[0][1].split('-'))
     adv_ph = ''.join(res[0][0].split('-'))
@@ -43,6 +43,19 @@ def make_call(match_id):
         log.info('table updated with query {}'.format(update))
     else:
         log.error('table couldnot be updated')
+    while sbo.status != 'completed':
+        time.sleep(60)
+        sbo = client.calls(sbo.sid).fetch()
+        log.info('status of the call: {}'.format(sbo.status))
+    update = "update PCV_MATCHES set call_duration='{}' where match_sid={}".format(sbo.duration,match_id)
+    if update_query(update):
+        log.info('table updated with query {}'.format(update))
+    else:
+        log.error('table couldnot be updated')
+    msg_body_sbo = "How did you like the call with {}".format(res[0][2])
+    msg_body_adv = "How did you like the call with {}".format(res[0][3])
+    sbo = send_sms(msg_body_sbo, sbo_ph)
+    sbo = send_sms(msg_body_sbo, adv_ph)
 
 if __name__=="__main__":
     run()

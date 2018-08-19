@@ -18,6 +18,7 @@ def verify():
     log.info('service health')
     return 'service is up'
 
+
 @app.route('/get_logs', methods=['GET'])
 def get_logs():
     pretty_print_POST(request)
@@ -46,7 +47,6 @@ def get_logs():
         temp["sbo_phone"],temp["interview_date"],temp["interview_time"],\
         temp["call_sid"],temp["call_duration"],temp["status"] = res[0],res[1],res[2],res[3],\
         res[4],res[5],res[6],res[7],res[8],res[9],duration,status
-        #send_data["values"].append(temp)
         values.append(temp)
     log.info("sent response \n{}".format(pprint.pformat(values)))
     return Response(json.dumps(values), headers=HEADER, status=200, mimetype='application/json')
