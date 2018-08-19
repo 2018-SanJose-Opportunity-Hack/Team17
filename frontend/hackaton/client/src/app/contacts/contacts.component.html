@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Business Advising.ORG</a>
+ 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a ng-controller="ScrollCtrl" ng-click="gotoElement('middle')" class="nav-link" href="#survey">Survey Analysis</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+<br>
+
+  <div class = "container">
+  <div class="card border-primary" style="max-width: 300rem;">
+      <div class="card-header"><h3 class="page-header">Call Logger</h3></div>
+      <div class="card-body">    
+          <table class="table table-hover">
+              <thead>
+               <tr>
+               <th scope="col">Advisor Name</th>
+               <th scope="col">Advisor Email</th>
+               <th scope="col">SBO Name</th>
+               <th scope="col">SBO Email</th>
+               <th scope="col">Date</th>
+               <th scope="col">Call Status</th>
+               <th scope="col">Duration</th>
+      
+             </tr>
+           </thead>       
+           <tbody *ngFor = "let contact of contacts">
+             <tr class="table-active">         
+               <td>{{contact.advisor_name}}</td>
+               <td>{{contact.advisor_email}}</td>
+               <td>{{contact.sbo_name}}</td>
+               <td>{{contact.sbo_email}}</td>
+               <td>{{contact.interview_date}}</td>
+               <td>{{contact.status}}</td>
+               <td>{{contact.call_duration}}</td>
+               <td></td>
+             </tr>   
+           </tbody>
+         </table> 
+      </div>
+    </div>
+  </div><br><br>
+  <div id='survey' class="container" ><hr>
+  <div class="card border-primary" style="max-width: 300rem;">
+      <div class="card-header"><h3 class="page-header">Last Two Week Survey</h3></div>
+      <div align="center">
+      <div class="card-body"> 
+          <iframe width="600" height="371" seamless frameborder="2" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVML2V2uQPCzrpok4Txae4hizDZ2F-ig1OixjNbHWXNa_MwzB977Q9sZ4vNAWKiKAQaYl-exZn9S1y/pubchart?oid=335513227&amp;format=interactive"></iframe>
+          <br><br>
+          <iframe width="600" height="371" seamless frameborder="2" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVML2V2uQPCzrpok4Txae4hizDZ2F-ig1OixjNbHWXNa_MwzB977Q9sZ4vNAWKiKAQaYl-exZn9S1y/pubchart?oid=7882552&amp;format=interactive"></iframe>
+          <br><br>
+          <iframe width="600" height="371" seamless frameborder="2" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVML2V2uQPCzrpok4Txae4hizDZ2F-ig1OixjNbHWXNa_MwzB977Q9sZ4vNAWKiKAQaYl-exZn9S1y/pubchart?oid=55340915&amp;format=interactive"></iframe>
+          <br><br>
+          <iframe width="600" height="371" seamless frameborder="2" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVML2V2uQPCzrpok4Txae4hizDZ2F-ig1OixjNbHWXNa_MwzB977Q9sZ4vNAWKiKAQaYl-exZn9S1y/pubchart?oid=1189971942&amp;format=interactive"></iframe>
+        
+      </div>
+     </div>
+  </div>
+  </div>
+   <br>
+   <br>
+
+   
