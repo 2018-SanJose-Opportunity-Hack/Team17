@@ -4,6 +4,7 @@ import pprint
 import json
 
 from Team17.util.imports import *
+from make_call import client
 
 config = file_config()
 log = logger.getLogger(__name__)
@@ -26,12 +27,17 @@ def get_logs():
     result = fetch_query(statement)
     log.info(result)
     for res in result:
+        if res[9]:
+            call = client.calls(res[9]).fetch()
+            duration = call.duration + "seconds"
+        else:
+            duration = None
         temp = templates.call_log.copy()
         temp["match_sid"],temp["advisor_name"],temp["advisor_phone"],\
         temp["advisor_email"],temp["sbo_name"],temp["sbo_email"],\
         temp["sbo_phone"],temp["interview_date"],temp["interview_time"],\
         temp["call_sid"],temp["call_duration"] = res[0],res[1],res[2],res[3],\
-        res[4],res[5],res[6],res[7],res[8],res[9],res[10]
+        res[4],res[5],res[6],res[7],res[8],duration,res[10]
         send_data["values"].append(temp)
     log.info("sent response \n{}".format(pprint.pformat(send_data)))
     return Response(json.dumps(send_data), status=200, mimetype='application/json')
