@@ -41,4 +41,6 @@ Thumbs.db
 *.pyc
 __pycache__
 .pytest_cache
+frontend/hackaton/node_modules
+frontend/hackaton/client/node_modules
 cred.json
