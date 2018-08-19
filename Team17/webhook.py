@@ -25,6 +25,7 @@ def get_sbo_twiml():
     response.append(dial)
     print(str(response))
     return Response(str(response),mimetype='text/xml')
+    
 
 @application.route('/adv_twiml', methods=['GET','POST'])
 def get_adv_twiml():
