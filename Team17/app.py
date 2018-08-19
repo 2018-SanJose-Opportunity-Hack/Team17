@@ -29,7 +29,7 @@ def get_logs():
     for res in result:
         if res[9]:
             call = client.calls(res[9]).fetch()
-            duration = call.duration + "seconds"
+            duration = call.duration + " seconds"
         else:
             duration = None
         temp = templates.call_log.copy()
@@ -37,7 +37,7 @@ def get_logs():
         temp["advisor_email"],temp["sbo_name"],temp["sbo_email"],\
         temp["sbo_phone"],temp["interview_date"],temp["interview_time"],\
         temp["call_sid"],temp["call_duration"] = res[0],res[1],res[2],res[3],\
-        res[4],res[5],res[6],res[7],res[8],duration,res[10]
+        res[4],res[5],res[6],res[7],res[8],res[9],duration
         send_data["values"].append(temp)
     log.info("sent response \n{}".format(pprint.pformat(send_data)))
     return Response(json.dumps(send_data), status=200, mimetype='application/json')
