@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {Contact} from './contact';
 import 'rxjs/add/operator/map';
-
+import {Observable}     from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 @Injectable()
 export class ContactService {
 
@@ -10,7 +11,9 @@ export class ContactService {
 
 
   getcontacts(){
-    return this.http.get('http://localhost:3000/api/contacts')
-    .map(res => res.json());
+    console.log("going");
+    return this.http.get('https://b11e976e.ngrok.io/get_logs')
+    .map(res => res.json())
+    .do(value => console.log(value));
   }
 }
