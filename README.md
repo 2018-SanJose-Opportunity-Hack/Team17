@@ -23,3 +23,8 @@ webhook: python webhook.py</br>
 ./ngrok http 5000</br>
 service: python app.py</br>
 ./ngrok http 30000</br>
+
+#### To run dashbord:
+go to frontend/hackaton</br>
+`npm install`</br>
+`npm start`
