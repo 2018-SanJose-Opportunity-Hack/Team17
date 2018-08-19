@@ -63,8 +63,10 @@ def make_call(match_id):
     sbo = update_call_sid(sbo,match_id)
     update_call_duration(sbo,match_id)
     # send message
-    msg_body_sbo = "How did you like the call with {}".format(res[0][2])
-    msg_body_adv = "How did you like the call with {}".format(res[0][3])
+    msg_body_sbo = "How did you like the call with {}? Please click here to rate your meeting {}"\
+    .format(res[0][2], config.get('GOOGLE_FORM','url')+str(match_id))
+    msg_body_adv = "How did you like the call with {}? Please click here to rate your meeting {}"\
+    .format(res[0][3], config.get('GOOGLE_FORM','url')+str(match_id))
     sbo = send_sms(msg_body_sbo, sbo_ph)
     adv = send_sms(msg_body_adv, adv_ph)
 
