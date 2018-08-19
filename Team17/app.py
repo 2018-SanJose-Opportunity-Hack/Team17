@@ -35,12 +35,12 @@ def get_logs():
             call = client.calls(res[9]).fetch()
             duration = call.duration + " sec"
             if int(call.duration) > 30:
-                status = 'completed'
+                status = 'Completed'
             else:
-                status = "not completed"
+                status = "Not Completed"
         else:
             duration = None
-            status = "not completed"
+            status = "Not Completed"
         temp = templates.call_log.copy()
         temp["match_sid"],temp["advisor_name"],temp["advisor_phone"],\
         temp["advisor_email"],temp["sbo_name"],temp["sbo_email"],\
