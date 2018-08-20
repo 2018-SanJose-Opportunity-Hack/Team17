@@ -28,3 +28,11 @@ service: python app.py</br>
 go to frontend/hackaton</br>
 `npm install`</br>
 `npm start`
+
+
+#### Setup webhook for twillio make call apis
+The webhook.py is a flask app that has to be run and need to have a public url </br>
+update the urls in config.ini in the section [TWIML] </br>
+
+#### The main web service is app.py
+This is again a flask app and should be run in prod in a webserver like gunicorn or nginx</br>
